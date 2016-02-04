@@ -7,6 +7,7 @@ class SurveyController < ApplicationController
 
   def answer
     UserAnswer.create(user_answer_params) #sauvegarde la réponse, affiche une page avec la question suivante, renvoit l'utilisateur sur la prochaine question
+    redirect_to /survey/question/:id
     #trouver la following question
   end
 
@@ -16,3 +17,23 @@ class SurveyController < ApplicationController
     # regarder la doc de "strong parameters" et remplir permit(...)
   end
 end
+
+
+
+# class PostsController < ApplicationController
+
+# def new
+#  @college = College.find(params[:college_id])
+#  @post = Post.new(:college_id => @college.id)
+#  @title = "Submit Post"
+# end
+
+# def create
+#  @post = Post.new(params[:post])
+#  if @post.save
+#  redirect_to root_path, :flash => { :success => "Post Submitted Successfully!" }
+# else
+#   @title = "Submit Post"
+#   render 'new'
+# end
+# end....
