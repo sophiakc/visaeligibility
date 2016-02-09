@@ -6,34 +6,22 @@ class SurveyController < ApplicationController
   end
 
   def answer
-    UserAnswer.create(user_answer_params) #sauvegarde la réponse, affiche une page avec la question suivante, renvoit l'utilisateur sur la prochaine question
-    redirect_to /survey/question/:id
-    #trouver la following question
+    if session[:user_id].blank?
+      user = User.create
+      session[:user_id] = user.id
+    end
+
+    user_answer = UserAnswer.create(user_answer_params.merge(user_id: session[:user_id]))
+    id = user_answer.possible_answer.following_question_id
+    if id.blank?
+      session[:user_id] = nil
+      render text: "coucou c'est la fin !"
+    else
+      redirect_to question_path(id)
+    end
   end
 
   private def user_answer_params
-    params.require(:user_answer).permit(:possible_answer_id, :user_id)
-    # ds la clé user_answer je permets certains strong parameters
-    # regarder la doc de "strong parameters" et remplir permit(...)
+    params.require(:user_answer).permit(:possible_answer_id)
   end
 end
-
-
-
-# class PostsController < ApplicationController
-
-# def new
-#  @college = College.find(params[:college_id])
-#  @post = Post.new(:college_id => @college.id)
-#  @title = "Submit Post"
-# end
-
-# def create
-#  @post = Post.new(params[:post])
-#  if @post.save
-#  redirect_to root_path, :flash => { :success => "Post Submitted Successfully!" }
-# else
-#   @title = "Submit Post"
-#   render 'new'
-# end
-# end....
