@@ -5,3 +5,6 @@
 <% @eligible_visas.each do |visa| %>
   <%= visa.name %>
 <% end %>
+
+<br>
+<%= link_to 'Start again the survey', question_path(1) %>
