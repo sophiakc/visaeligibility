@@ -76,7 +76,8 @@ ActiveRecord::Schema.define(version: 20160215195018) do
   end
 
   create_table "visas", force: :cascade do |t|
-    t.string   "visa_name"
+    t.string   "name"
+    t.string   "scenario"
     t.integer  "coefficient_easy_to_get"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

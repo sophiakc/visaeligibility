@@ -1,7 +1,8 @@
 class CreateVisas < ActiveRecord::Migration
   def change
     create_table :visas do |t|
-      t.string :visa_name
+      t.string :name
+      t.string :scenario
       t.integer :coefficient_easy_to_get
 
       t.timestamps null: false
