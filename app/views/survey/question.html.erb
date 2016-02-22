@@ -3,7 +3,7 @@
 </h1>
 
 <%= form_for @user_answer, url: {action: "answer"} do |f| %>
-  <% @answers_possible.each do |possible_answer| %>
+  <% @possible_answers.each do |possible_answer| %>
     <%= f.radio_button(:possible_answer_id, possible_answer.id) %> <%= possible_answer.content %><br/>
   <% end %>
   <%= f.submit "> Following question" %>
