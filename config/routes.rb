@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'survey/question/:id' => 'survey#question', as: 'question'
   post 'survey/answer'     => 'survey#answer'
   get 'result/:id' => 'result#result', as: 'result'
