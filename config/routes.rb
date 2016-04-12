@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   post 'survey/answer'     => 'survey#answer'
   get 'result/:id' => 'result#result', as: 'result'
 
-  get "/" => 'home#index'
+  # get "/" => 'home#index'
+  root :to => 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
