@@ -52,5 +52,4 @@ group :development do
 end
 
 gem 'jquery-turbolinks'
-# gem 'rails-assets-bootstrap'
 gem 'bootstrap-sass'
