@@ -1,7 +1,7 @@
 class SurveyController < ApplicationController
   def question
     @asked_question = Question.find_by(id: params[:id])
-    @answers_possible = @asked_question.possible_answers
+    @possible_answers = @asked_question.possible_answers
     @user_answer = UserAnswer.new
   end
 
@@ -14,8 +14,11 @@ class SurveyController < ApplicationController
     user_answer = UserAnswer.create(user_answer_params.merge(user_id: session[:user_id]))
     id = user_answer.possible_answer.following_question_id
     if id.blank?
+      # session[:user_id] = nil
+      # render text: "coucou c'est la fin !"
+      user_id = session[:user_id]
       session[:user_id] = nil
-      render text: "coucou c'est la fin !"
+      redirect_to result_path(user_id)
     else
       redirect_to question_path(id)
     end

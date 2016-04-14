@@ -1,0 +1,10 @@
+<h1>
+  A quel visa êtes-vous eligible ?
+</h1>
+
+<% @eligible_visas.each do |visa| %>
+  <%= visa.name %>
+<% end %>
+
+<br>
+<%= link_to 'Start again the survey', question_path(1) %>

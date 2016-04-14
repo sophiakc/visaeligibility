@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
 
+<<<<<<< HEAD
+=======
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+>>>>>>> master
   get 'survey/question/:id' => 'survey#question', as: 'question'
   post 'survey/answer'     => 'survey#answer'
+  get 'result/:id' => 'result#result', as: 'result'
+
+  # get "/" => 'home#index'
+  root :to => 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
