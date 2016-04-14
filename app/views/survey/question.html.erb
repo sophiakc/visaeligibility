@@ -5,6 +5,8 @@
 <%= form_for @user_answer, url: {action: "answer"} do |f| %>
   <% @possible_answers.each do |possible_answer| %>
     <%= f.radio_button(:possible_answer_id, possible_answer.id) %> <%= possible_answer.content %><br/>
+    <%= f.radio_button(:possible_answer_id, possible_answer.id) %> <%= possible_answer.content %><br/>
+    <!-- #comment afficher la prochaine possible_answer? -->
   <% end %>
   <%= f.submit "> Following question" %>
 <% end %>
