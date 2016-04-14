@@ -20,6 +20,16 @@ div {
   opacity: 0.8;
 }
 
+.jumbotron {
+  background: white;
+  opacity: 0.8;
+}
+
+.jumbotron > h1, .jumbotron > p {
+  font-color: white;
+}
+
+
 // sticky footer
 .footer {
   position: absolute;
